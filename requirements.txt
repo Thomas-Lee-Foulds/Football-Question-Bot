@@ -24,7 +24,7 @@ cffi==1.12.3
 chardet==3.0.4
 Click==7.0
 cloudpickle==1.2.1
-clyent==1.2.2
+clyent
 colorama==0.4.0
 comtypes==1.1.7
 conda==4.7.10
@@ -56,6 +56,8 @@ html5lib==1.0.1
 idna==2.8
 imageio==2.5.0
 imagesize==1.1.0
+google_images_download
+tweepy
 importlib-metadata==0.17
 ipykernel==5.1.1
 ipython==7.6.1
