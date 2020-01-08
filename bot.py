@@ -24,7 +24,7 @@ while True:
    
     print("Getting the tweet:")
     player_1 = get_unique_name
-    print(player_1)
+    print(player_1 + '\n')
     player_2 = get_unique_name(player_1)
     print(player_2)
     media_url_1 = get_media_url(player_1)
