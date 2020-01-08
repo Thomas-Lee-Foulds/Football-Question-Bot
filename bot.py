@@ -30,15 +30,10 @@ while True:
     media_url_1 = get_media_url(player_1)
     media_url_2 = get_media_url(player_2)
     media_urls = [media_url_1, media_url_2]
-    for url in media_urls:
-        filename = 'temp.jpg'
-        request = requests.get(url, stream=True)
-        if request.status_code == 200:
-            with open(filename, 'wb') as image:
-                for chunk in request:
-                    image.write(chunk)
-            res = api.media_upload(filename)
-            media_ids.append(res.media_id)
+    res_1 = api.media_upload(media_url_1)
+    res_2 = api.media_upload(media_url_2)
+    media_ids.append(res_1.media_id)
+    media_ids.append(res_2.media_id)
 
     tweet = generate_tweet(player_1,player_2)
     api.update_status(tweetstatus=tweet, media_ids=media_ids)
