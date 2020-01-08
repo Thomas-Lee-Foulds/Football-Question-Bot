@@ -25,12 +25,11 @@ while True:
     print("Getting the tweet:")
     player_1 = get_unique_name
     print(player_1)
-    player_2 = get_unique_name(player_1)
+    player_2 = get_unique_name
     print(player_2)
     media_url_1 = get_media_url(player_1)
     media_url_2 = get_media_url(player_2)
     media_urls = [media_url_1, media_url_2]
-    print(media_urls)
     for url in media_urls:
         filename = 'temp.jpg'
         request = requests.get(url, stream=True)
@@ -43,4 +42,6 @@ while True:
 
     tweet = generate_tweet(player_1,player_2)
     api.update_status(tweetstatus=tweet, media_ids=media_ids)
+    media_urls = []
+    media_ids = []
     time.sleep(INTERVAL)
