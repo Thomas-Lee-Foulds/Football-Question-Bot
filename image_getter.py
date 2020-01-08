@@ -9,6 +9,6 @@ def get_media_url(player_name):
                  "print_urls":True, 
                  "size": "medium", 
                  "aspect_ratio": "panoramic"} 
-    path = response.download(arguments)[1]
+    path = response.download(arguments)
     print("this here is the", path)
     return path
