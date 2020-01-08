@@ -10,4 +10,5 @@ def get_media_url(player_name):
                  "size": "medium", 
                  "aspect_ratio": "panoramic"} 
     path = response.download(arguments)
-    return google_images_download.print_urls
+    print(path)
+    return path
