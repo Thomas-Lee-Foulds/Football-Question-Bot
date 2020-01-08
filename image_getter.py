@@ -11,5 +11,5 @@ def get_media_url(player_name):
                  "aspect_ratio": "panoramic"} 
     path = response.download(arguments)
 
-    print(path)
+    print(path[1])
     return path
