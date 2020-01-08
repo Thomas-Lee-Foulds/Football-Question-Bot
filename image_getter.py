@@ -9,6 +9,6 @@ def get_media_url(player_name):
                  "print_urls":True, 
                  "size": "medium", 
                  "aspect_ratio": "panoramic",
-                 "save_source": "url.txt"} 
+                 "save_source": "url"} 
     path = response.download(arguments)
     return path

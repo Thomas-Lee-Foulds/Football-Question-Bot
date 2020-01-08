@@ -29,7 +29,7 @@ while True:
     print(player_2)
     media_url_1 = get_media_url(player_1)
     media_url_2 = get_media_url(player_2)
-    media_urls = set(line.strip() for line in open('url'))
+    media_urls = set(line.strip() for line in open('url.txt'))
     print(media_urls)
     for url in media_urls:
         filename = 'temp.jpg'
