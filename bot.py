@@ -5,7 +5,6 @@ from urllib import request
 from image_getter import get_media_url
 from tweet_former import generate_tweet
 from player_selector import get_unique_name
-from apscheduler.schedulers.blocking import BlockingScheduler
 from os import environ
 CONSUMER_KEY = environ['CONSUMER_KEY']
 CONSUMER_SECRET = environ['CONSUMER_SECRET']
@@ -15,13 +14,10 @@ GOOGLE_API = environ['GOOGLE_API']
 SEARCH_ENGINE_ID = environ['SEARCH_ENGINE_ID']
 
 
-
-auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
-api = tweepy.API(auth)
-sched = BlockingScheduler()
-@sched.scheduled_job('interval', minutes=60)
-def timed_job():
+def tweet():
+    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+    auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+    api = tweepy.API(auth)
     while True:
         
         media_ids = []
@@ -42,5 +38,4 @@ def timed_job():
         tweet = generate_tweet(player_1,player_2)
         api.update_status(status=tweet, media_ids=media_ids)
         media_urls = []
-        media_ids = []
-sched.start()  
+        media_ids = [] 
