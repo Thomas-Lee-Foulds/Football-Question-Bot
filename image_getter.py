@@ -5,6 +5,7 @@ def get_media_url(player_name, google_api, search_engine_id):
     query = str(player_name) + " " + "football"
     result = resource.cse().list(q=query, cx = search_engine_id, searchType='image', imgType='clipart', fileType='png', safe= 'off', num = 1).execute()
     print(result)
+    print("Addiction")
     for item in result['items']:
         url = item['link']   
     return  url
