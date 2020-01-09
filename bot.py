@@ -14,7 +14,7 @@ ACCESS_SECRET = environ['ACCESS_SECRET']
 GOOGLE_API = environ['GOOGLE_API']
 SEARCH_ENGINE_ID = environ['SEARCH_ENGINE_ID']
 
-INTERVAL = 60 * 60 * 3
+INTERVAL = 60 * 60
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
