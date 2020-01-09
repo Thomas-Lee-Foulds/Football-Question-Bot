@@ -1,7 +1,7 @@
 import time
 import sys
 import tweepy
-import urllib
+import urllib2
 from image_getter import get_media_url
 from tweet_former import generate_tweet
 from player_selector import get_unique_name
