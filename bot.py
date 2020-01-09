@@ -11,6 +11,8 @@ CONSUMER_KEY = environ['CONSUMER_KEY']
 CONSUMER_SECRET = environ['CONSUMER_SECRET']
 ACCESS_KEY = environ['ACCESS_KEY']
 ACCESS_SECRET = environ['ACCESS_SECRET']
+GOOGLE_API = environ['GOOGLE_API']
+SEARCH_ENGINE_ID = environ['SEARCH_ENGINE_ID']
 
 INTERVAL = 60 * 60 * 3
 
@@ -21,15 +23,17 @@ api = tweepy.API(auth)
 while True:
     
     media_ids = []
-   
+    media_urls = []
+
     print("Getting the tweet:")
     player_1 = get_unique_name()
     print(player_1)
     player_2 = get_unique_name()
     print(player_2)
-    media_url_1 = get_media_url(player_1)
-    media_url_2 = get_media_url(player_2)
-    media_urls = set(line.strip() for line in open('url.txt'))
+    media_url_1 = get_media_url(player_1, GOOGLE_API,SEARCH_ENGINE_ID)
+    media_urls.append(media_url_1)
+    media_url_2 = get_media_url(player_2, GOOGLE_API,SEARCH_ENGINE_ID)
+    media_urls.append(media_url_2)
     print(media_urls)
     for url in media_urls:
         filename = 'temp.jpg'

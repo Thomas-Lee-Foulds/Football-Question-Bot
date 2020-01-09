@@ -2,3 +2,6 @@ tweepy
 requests
 google_images_download
 flask
+google-api-python-client
+google-auth-oauthlib 
+google-auth-httplib2

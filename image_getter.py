@@ -1,14 +1,9 @@
-from google_images_download import google_images_download 
+from apiclient.discovery import build 
 
-def get_media_url(player_name):
-    response = google_images_download.googleimagesdownload()  
+def get_media_url(player_name, google_api, search_engine_id):
+    resource = build("customsearch", "v1", developerKey= google_api).cse()
     query = str(player_name) + " " + "football"
-    arguments = {"keywords": query, 
-                 "format": "jpg", 
-                 "limit":1, 
-                 "print_urls":True, 
-                 "size": "medium", 
-                 "aspect_ratio": "panoramic",
-                 "save_source": "url"} 
-    path = response.download(arguments)
-    return  path
+    resource.list(q=query, cx = search_engine_id, searchType='image', imgSize='medium', num = 1)
+    url =  result['items'][0]['link']
+    
+    return  url
