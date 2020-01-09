@@ -1,7 +1,7 @@
 import time
 import sys
 import tweepy
-import requests
+import urllib.request
 from image_getter import get_media_url
 from tweet_former import generate_tweet
 from player_selector import get_unique_name
@@ -23,28 +23,20 @@ api = tweepy.API(auth)
 while True:
     
     media_ids = []
-    media_urls = []
-
     print("Getting the tweet:")
     player_1 = get_unique_name()
-    print(player_1)
     player_2 = get_unique_name()
-    print(player_2)
     media_url_1 = get_media_url(player_1, GOOGLE_API,SEARCH_ENGINE_ID)
-    media_urls.append(media_url_1)
     media_url_2 = get_media_url(player_2, GOOGLE_API,SEARCH_ENGINE_ID)
-    media_urls.append(media_url_2)
-    print(media_urls)
-    for url in media_urls:
-        filename = 'temp.jpg'
-        request = requests.get(url, stream=True)
-        if request.status_code == 200:
-            with open(filename, 'wb') as image:
-                for chunk in request:
-                    image.write(chunk)
-            res = api.media_upload(filename)
-            media_ids.append(res.media_id)
     
+    urllib.request.urlretrieve(media_url_1, str(player_1) + ".jpg")
+    res = api.media_upload(str(player_1) + ".jpg")
+    media_ids.append(res.media_id)
+    
+    urllib.request.urlretrieve(media_url_2, str(player_2) + ".jpg")
+    res = api.media_upload(str(player_2) + ".jpg")
+    media_ids.append(res.media_id)
+
     tweet = generate_tweet(player_1,player_2)
     api.update_status(tweetstatus=tweet, media_ids=media_ids)
     media_urls = []
