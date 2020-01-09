@@ -5,5 +5,6 @@ def get_media_url(player_name, google_api, search_engine_id):
     query = str(player_name) + " " + "football"
     result = resource.list(q=query, cx = search_engine_id, searchType='image', imgSize='medium', num = 1)
     for item in result['items']:
-        url = item['link']
-    return  url
+        item_response = item.json()
+        
+    return  item_response["link"]
