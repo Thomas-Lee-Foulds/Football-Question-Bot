@@ -1,7 +1,7 @@
 import time
 import sys
 import tweepy
-import urllib2
+from urllib import request
 from image_getter import get_media_url
 from tweet_former import generate_tweet
 from player_selector import get_unique_name
@@ -29,11 +29,11 @@ while True:
     media_url_1 = get_media_url(player_1, GOOGLE_API,SEARCH_ENGINE_ID)
     media_url_2 = get_media_url(player_2, GOOGLE_API,SEARCH_ENGINE_ID)
     
-    urllib.request.urlretrieve(media_url_1, str(player_1) + ".jpg")
+    request.urlretrieve(media_url_1, str(player_1) + ".jpg")
     res = api.media_upload(str(player_1) + ".jpg")
     media_ids.append(res.media_id)
     
-    urllib.request.urlretrieve(media_url_2, str(player_2) + ".jpg")
+    request.urlretrieve(media_url_2, str(player_2) + ".jpg")
     res = api.media_upload(str(player_2) + ".jpg")
     media_ids.append(res.media_id)
 
