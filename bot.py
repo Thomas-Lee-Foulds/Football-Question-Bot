@@ -49,5 +49,4 @@ while True:
     api.update_status(tweetstatus=tweet, media_ids=media_ids)
     media_urls = []
     media_ids = []
-    open('url.txt', 'w').close()
     time.sleep(INTERVAL)
