@@ -1,2 +1,3 @@
 def generate_tweet(player_1,player_2):
-    return 'Who is better?, ' + str(player_1) + 'or ' + str(player_2) + '\nComment or Quote Retweet Below!'
+    tweet = ('Who is better?, ' + str(player_1) + 'or ' + str(player_2) + '\nComment or Quote Retweet Below!')
+    return tweet

@@ -38,7 +38,7 @@ while True:
     media_ids.append(res.media_id)
 
     tweet = generate_tweet(player_1,player_2)
-    api.update_status(tweetstatus=tweet, media_ids=media_ids)
+    api.update_status(status=tweet, media_ids=media_ids)
     media_urls = []
     media_ids = []
     time.sleep(INTERVAL)
