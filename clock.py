@@ -6,4 +6,4 @@ sched.start()
 @sched.scheduled_job('interval', minutes=60)
 def timed_job():
     tweet()
- 
+sched.print_jobs()
