@@ -1,12 +1,18 @@
-from random import sample
+import random
 
-def get_unique_name(*args):
-    first_name = 'n/a'
-    for ar in args:
-        first_name = ar
-    while True:
-        players = set(line.strip() for line in open('players.txt'))
-        rand_name = sample(players,1)[0]
-        if (first_name != rand_name):
-            break
-    return rand_name
+def get_names():
+    
+    chosen = random.randint(1,5)
+    if chosen == 1:
+        players = set(line.strip() for line in open('Attackers.txt'))
+        players_chosen = random.sample(players,2)
+    elif chosen == 2:
+        players = set(line.strip() for line in open('Midfielders.txt'))
+        players_chosen = random.sample(players,2)
+    elif chosen == 3:
+        players = set(line.strip() for line in open('Defenders.txt'))
+        players_chosen = random.sample(players,2)
+    elif chosen == 4:
+        players = set(line.strip() for line in open('Goalkeepers.txt'))
+        players_chosen = random.sample(players,2)
+    return players_chosen

@@ -4,7 +4,7 @@ import tweepy
 from urllib import request
 from image_getter import get_media_url
 from tweet_former import generate_tweet
-from player_selector import get_unique_name
+from player_selector import get_names
 
 from os import environ
 CONSUMER_KEY = environ['CONSUMER_KEY']
@@ -22,21 +22,21 @@ api = tweepy.API(auth)
 while True:
     
     media_ids = []
+    media_urls = []
+    i = 0
     print("Getting the tweet:")
-    player_1 = get_unique_name()
-    player_2 = get_unique_name()
-    media_url_1 = get_media_url(player_1, GOOGLE_API,SEARCH_ENGINE_ID)
-    media_url_2 = get_media_url(player_2, GOOGLE_API,SEARCH_ENGINE_ID)
+    player_names = get_names()
+    for player in player_names:
+        media_urls.append(get_media_url(player, GOOGLE_API,SEARCH_ENGINE_ID))
     
-    request.urlretrieve(media_url_1, str(player_1) + ".jpg")
-    res = api.media_upload(str(player_1) + ".jpg")
-    media_ids.append(res.media_id)
+    for url in media_urls:
+        request.urlretrieve(url, str(player_names[i]) + ".jpg")
+        res = api.media_upload(str(player_names[i]) + ".jpg")
+        media_ids.append(res.media_id)
+        i += 1
     
-    request.urlretrieve(media_url_2, str(player_2) + ".jpg")
-    res = api.media_upload(str(player_2) + ".jpg")
-    media_ids.append(res.media_id)
-
-    tweet = generate_tweet(player_1,player_2)
+    
+    tweet = generate_tweet(player_names)
     api.update_status(status=tweet, media_ids=media_ids)
     media_urls = []
     media_ids = []
