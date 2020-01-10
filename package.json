@@ -1,0 +1,13 @@
+{
+    "name": "football-bot",
+    "version": "1.0.0",
+    "description": "football question generator",
+    "scripts": {
+      "start": "serve"
+    },
+    "dependencies": {
+      "serve": "^10.0.1"
+    },
+    "author": "Pulkit Aggarwal"
+  }
+  
